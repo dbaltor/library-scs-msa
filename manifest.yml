@@ -1,0 +1,35 @@
+---
+applications:
+- name: library-msa
+  path: application/build/libs/application-1.0.0.jar
+  env:
+    JBP_CONFIG_OPEN_JDK_JRE: '{ jre: { version: 11.+ } }'
+  buildpacks:
+  - https://github.com/cloudfoundry/java-buildpack.git
+  services:
+  - service-registry
+  - config-server
+- name: library-book-service
+  path: book/build/libs/book-1.0.0.jar
+  env:
+    JBP_CONFIG_OPEN_JDK_JRE: '{ jre: { version: 11.+ } }'
+    SPRING_PROFILES_ACTIVE: cloud
+    JBP_CONFIG_SPRING_AUTO_RECONFIGURATION: '{enabled: false}'
+  buildpacks:
+  - https://github.com/cloudfoundry/java-buildpack.git
+  services:
+  - library-ms
+  - service-registry
+  - config-server
+- name: library-reader-service
+  path: reader/build/libs/reader-1.0.0.jar
+  env:
+    JBP_CONFIG_OPEN_JDK_JRE: '{ jre: { version: 11.+ } }'
+    SPRING_PROFILES_ACTIVE: cloud
+    JBP_CONFIG_SPRING_AUTO_RECONFIGURATION: '{enabled: false}'
+  buildpacks:
+  - https://github.com/cloudfoundry/java-buildpack.git
+  services:
+  - library-pg
+  - service-registry
+  - config-server

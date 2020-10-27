@@ -1,0 +1,11 @@
+---
+applications:
+- name: library-gtw
+  path: build/libs/gateway-1.0.0.jar
+  env:
+    JBP_CONFIG_OPEN_JDK_JRE: '{ jre: { version: 11.+ } }'
+  buildpacks:
+  - https://github.com/cloudfoundry/java-buildpack.git
+  services:
+  - service-registry
+  - config-server
