@@ -8,13 +8,13 @@ This demo aims to show the power of Tanzu Application Service (TAS) platfom when
 Each service binds to Eureka Server to discover all the others and automatically start using <i>client-side load balancing</i> through OpenFeign. The front-end service will accordingly configure its home page when running on Tanzu Application Service (TAS).<br>
 Different Application Instances (AIs) will render the UI using different background colors, up to 4 different colors.<br>
 <br>
-You can generate 10 readers at a time clicking on the button <i>Load Readers</i>.<br>
-You can generate 100 books at a time clicking on the button <i>Load Books</i>. The first 40 books will evenly be assigned to some readers.<br>
+You can generate 10 readers at a time clicking on the <i>Load Readers</i> button.<br>
+You can generate 100 books at a time clicking on the <i>Load Books</i> button. The first 40 books will evenly be assigned to some readers.<br>
 You can visualise the list of readers and books following the corresponding links. Use the browser's back buttom to return to the home page.<br>
 <p/>
 <p/>
 <h2>Testing locally:</h2>
-<br>
+Run the following commands to start up everything:
 <code>java -jar configserver/build/libs/configserver-1.0.0.jar</code><br>
 <code>java -jar registry/build/libs/registry-1.0.0.jar</code><br>
 <code>java -jar application/build/libs/application-1.0.0.jar</code><br>
@@ -27,7 +27,6 @@ localhost:8080
 <p/>
 <p/>
 <h2>Testing on the cloud:</h2>
-<br>
 1. Install all required services and push the applications on TAS running the <code>./scripts/init.sh</code>command.<br>
 <br>
 2. Use the published route to access the application running on TAS. You will notice that the home page looks different now. The application has detected it is running on TAS :) <br>
@@ -38,15 +37,15 @@ localhost:8080
 <br>
 4. Scale out the front-end application via the <code>cf scale app library-msa -i 3</code>command.<br>
 <br>
-You will notice that all AIs show consistent lists of readers and books as the both <b>Reader</b> and <b>Book</b> services are using the database services bound to them.<br>
+You will notice that all AIs show consistent lists of readers and books as both <b>Reader</b> and <b>Book</b> services are using backing database services bound to them.<br>
 <br>
 5. Stop the <b>Reader</b> service instance using the <code>cf stop library-reader-service</code> command.<br>
 <br>
-6. You can verify that the <b>Reader</b> service instance is gone clicking on the <i>List of Readers</i> link. The list shows up empty.<br>
+6. You can verify that the <b>Reader</b> service instance is gone clicking on the <i>List of Readers</i> link on the home page. The list shows up empty.<br>
 <br>
-7. Navigate to the <i>List of Books</i> page. Borrowing a book to some reader who hasn't yet borrowed any books should be successful despite the *Reader* service being down. This is the <i>circuit breaker pattern</i> in action.<br>
+7. Navigate to the <i>List of Books</i> page. Borrow a book to some reader who hasn't yet borrowed any books. The operation is to succeed despite the <b>Reader</b> service being down. This is the <i>circuit breaker pattern</i> in action.<br>
 <br>
-8. You can access the back-end services RESTful APIs via the Spring Cloud Gateway. For example, retrieve the list of books using the <code>http library-gtw.cfapps.io/library-book-service/books</code> command.
+8. You can access the back-end services RESTful APIs via the <b>API Gateway</b>. For example, retrieve the list of books using the <code>http library-gtw.cfapps.io/library-book-service/books</code> command.
 <p/>
 <p/>
 <h2>Cleaning up:</h2>
@@ -56,11 +55,11 @@ You will notice that all AIs show consistent lists of readers and books as the b
 <p/>
 <h2>Architectural Decisions:</h2>
 <br>
-1) The application followes the microservice architecture pattern, with the back-end services serving RESTful APIs. The front-end service implements the Model-View-Controller (MVC) architectural pattern which is made easy by the Spring framework.<br> 
+1) The application follows the microservice architecture pattern and the back-end services expose RESTful APIs. The front-end service implements the Model-View-Controller (MVC) architectural pattern which is made easy by the Spring framework.<br> 
 <br>
-2) The front-end service can easily consume the RESTful APIs thanks to the declarative model offered by the Spring Cloud OpenFeign library<br>
+2) The front-end service can easily consume the RESTful APIs thanks to the declarative model offered by the Spring Cloud OpenFeign library.<br>
 <br>
-3) This microservice architecture leverages a service registry, config server and API gateway, all implemented using the Spring Cloud project.<br>
+3) This microservice architecture leverages a <b>service registry</b>, <b>config server</b> and <b>API gateway</b>, all of them implemented using the Spring Cloud project.<br>
 <br>
 4) SQL databases have been chosen as data stores. The default implementations of both <b>Reader</b> and <b>Book</b> services are the H2 embedded in-memory database when running locally.<br>
 
