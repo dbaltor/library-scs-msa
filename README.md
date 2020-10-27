@@ -30,7 +30,7 @@ localhost:8080
 <p/>
 <p/>
 <h2>Testing on the cloud:</h2>
-1. Install all required services and push the applications on TAS running the <code>./scripts/init.sh</code>command.<br>
+1. Install all required services and push the applications on TAS running the <code>./scripts/init.sh</code> script.<br>
 <br>
 2. Use the published route to access the application running on TAS. You will notice that the home page looks different now. The application has detected it is running on TAS :) <br>
 <ins>URL:</ins><br>
