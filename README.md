@@ -14,7 +14,7 @@ You can visualise the list of readers and books following the corresponding link
 <p/>
 <p/>
 <h2>Testing locally:</h2>
-Run the following commands to start up everything:
+Run the following commands to start everything up:<br>
 <code>java -jar configserver/build/libs/configserver-1.0.0.jar</code><br>
 <code>java -jar registry/build/libs/registry-1.0.0.jar</code><br>
 <code>java -jar application/build/libs/application-1.0.0.jar</code><br>
