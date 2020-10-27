@@ -5,7 +5,7 @@ This demo aims to show the power of Tanzu Application Service (TAS) platfom when
 <br>
 <img src="scMSA.png"> 
 <br>
-Each service binds to Eureka Server to discover all the others and automatically start using <i>client-side load balancing</i> through OpenFeign. The front-end service will accordingly configure its home page when running on Tanzu Application Service (TAS).<br>
+Each service binds to Eureka Server to discover all the others and start automatically using <i>client-side load balancing</i> through OpenFeign. The front-end service will configure accordingly its home page when running on Tanzu Application Service (TAS).<br>
 Different Application Instances (AIs) will render the UI using different background colors, up to 4 different colors.<br>
 <br>
 You can generate 10 readers at a time clicking on the <i>Load Readers</i> button.<br>
