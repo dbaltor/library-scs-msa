@@ -14,6 +14,8 @@ You can visualise the list of readers and books following the corresponding link
 <p/>
 <p/>
 <h2>Testing locally:</h2>
+The build process requires that your workstation have Maven installed to used by the Spring Cloud Contract project. Execute the <code>./scripts/build.sh</code> script to build everything.<br>
+<br>
 Run the following commands to start everything up:<br>
 <code>java -jar configserver/build/libs/configserver-1.0.0.jar</code><br>
 <code>java -jar registry/build/libs/registry-1.0.0.jar</code><br>
