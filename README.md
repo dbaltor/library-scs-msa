@@ -17,6 +17,7 @@ You can visualise the list of readers and books following the corresponding link
 Run the following commands to start everything up:<br>
 <code>java -jar configserver/build/libs/configserver-1.0.0.jar</code><br>
 <code>java -jar registry/build/libs/registry-1.0.0.jar</code><br>
+<code>java -jar gateway/build/libs/gateway-1.0.0.jar</code><br>
 <code>java -jar application/build/libs/application-1.0.0.jar</code><br>
 <code>java -jar book/build/libs/book-1.0.0.jar</code><br>
 <code>java -jar reader/build/libs/reader-1.0.0.jar</code><br>
