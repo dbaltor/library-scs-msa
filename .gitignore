@@ -6,9 +6,9 @@ configserver/config-repo
 .gradle
 build
 bin
-.settings
+.settings/*
 .project
-.classpath
+*/.classpath
 
 # Compiled class file
 *.class
