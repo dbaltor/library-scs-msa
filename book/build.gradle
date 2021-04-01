@@ -55,21 +55,24 @@ dependencies {
 	// includes com.sun.xml.bind:jaxb-osgi used by spring-mock-mvc
 	testImplementation 'io.rest-assured:xml-path:4.2.0'
 	
-	implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-client'
+	//Required to connect to PCF Service Registry.
+	implementation 'io.pivotal.spring.cloud:spring-cloud-services-starter-service-registry'
+	//implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-client'
 	implementation 'org.springframework.cloud:spring-cloud-starter-openfeign'
 	implementation 'io.github.openfeign:feign-okhttp'
-    implementation 'org.springframework.boot:spring-boot-starter-aop' // required by resilience4j
 	implementation "io.github.resilience4j:resilience4j-spring-boot2:${resilience4jVersion}"
-    implementation("io.github.resilience4j:resilience4j-all:${resilience4jVersion}") 
+    //implementation("io.github.resilience4j:resilience4j-all:${resilience4jVersion}") 
 	// required due to https://github.com/resilience4j/resilience4j/issues/1151
 	implementation "io.github.resilience4j:resilience4j-circuitbreaker:${resilience4jVersion}" 
 	implementation "io.github.resilience4j:resilience4j-timelimiter:${resilience4jVersion}" 
-	//implementation "io.micrometer:micrometer-registry-prometheus" // may be used by resilience4j"
-	//implementation 'org.springframework.cloud:spring-cloud-starter-config'
-	//Required to connect to PWS Config Server. It includes 
+	//implementation 'org.springframework.boot:spring-boot-starter-aop' // required by resilience4j
+	////implementation "io.micrometer:micrometer-registry-prometheus" // may be used by resilience4j"
+	
+	//Required to connect to PCF Config Server. It includes 
 		//Spring Cloud Config Client
 		//Spring Security OAuth2
 	implementation 'io.pivotal.spring.cloud:spring-cloud-services-starter-config-client'
+	
 	testImplementation 'org.springframework.cloud:spring-cloud-starter-contract-verifier'
 	testImplementation 'org.springframework.cloud:spring-cloud-starter-contract-stub-runner'
 
