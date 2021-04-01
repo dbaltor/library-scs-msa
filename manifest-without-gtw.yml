@@ -11,8 +11,6 @@ applications:
   - config-server
 - name: library-book-service
   path: book/build/libs/book-1.0.0.jar
-  routes:
-  - route: library-book-service.apps.internal
   env:
     JBP_CONFIG_OPEN_JDK_JRE: '{ jre: { version: 11.+ } }'
     SPRING_PROFILES_ACTIVE: cloud
@@ -23,13 +21,8 @@ applications:
   - library-ms
   - service-registry
   - config-server
-  - name: library-gateway
-    parameters: 
-      routes: [{"path": "/library-book-service/**"}]
 - name: library-reader-service
   path: reader/build/libs/reader-1.0.0.jar
-  routes:
-  - route: library-reader-service.apps.internal
   env:
     JBP_CONFIG_OPEN_JDK_JRE: '{ jre: { version: 11.+ } }'
     SPRING_PROFILES_ACTIVE: cloud
@@ -40,6 +33,3 @@ applications:
   - library-pg
   - service-registry
   - config-server
-  - name: library-gateway
-    parameters: 
-      routes: [{"path": "/library-reader-service/**"}]
