@@ -1,6 +1,6 @@
 # Example of microservice-based application running on Tanzu Application Service (Former Pivotal Cloud Foundry)
 <br>
-This demo aims to show the power of Tanzu Application Service (TAS) platfom when it comes to run microservices developed using <a href="https://spring.io/projects/spring-cloud">Spring Cloud</a> projects: <b>Spring Cloud Netflix</b>, <b>Spring Cloud OpenFeign</b>, <b>Spring Cloud Config</b> and <b>Spring Cloud Gateway</b>.
+This demo aims to show the power of Tanzu Application Service (TAS) platfom when it comes to run microservices developed using <a href="https://spring.io/projects/spring-cloud">Spring Cloud</a> umbrella project: <b>Spring Cloud Netflix</b>, <b>Spring Cloud OpenFeign</b>, <b>Spring Cloud Config</b> and <b>Spring Cloud Gateway</b>.
 <br>
 <br>
 <img src="scMSA.png"> 
@@ -29,12 +29,12 @@ Run the following commands to start everything up:<br>
 localhost:8080
 <p/>
 <p/>
-<h2>Testing on the cloud:</h2>
+<h2>Testing in the cloud:</h2>
 1. Install all required services and push the applications on TAS running the <code>./scripts/init.sh</code> script.<br>
 <br>
 2. Use the published route to access the application running on TAS. You will notice that the home page looks different now. The application has detected it is running on TAS :) <br>
 <ins>URL:</ins><br>
-<code>http://library-msa.cfapps.io</code><br>
+<code>https://library-msa.apps.pcfone.io/</code><br>
 <br>
 3. Generate some data clicking on <i>Load Readers</i> and <i>Load Books</i> buttons.<br>
 <br>
@@ -48,7 +48,7 @@ You will notice that all AIs show consistent lists of readers and books as both 
 <br>
 7. Navigate to the <i>List of Books</i> page. Borrow a book to some reader who hasn't yet borrowed any books. The operation is to succeed despite the <b>Reader</b> service being down. This is the <i>circuit breaker pattern</i> in action.<br>
 <br>
-8. You can access the back-end services RESTful APIs via the <b>API Gateway</b>. For example, retrieve the list of books using the <code>http library-gtw.cfapps.io/library-book-service/books</code> command.
+8. You can access the back-end services RESTful APIs via the <b>API Gateway</b>. For example, retrieve the list of books using the <code>http https://library-gtw.apps.pcfone.io/library-book-service/books</code> command.
 <p/>
 <p/>
 <h2>Cleaning up:</h2>
@@ -62,7 +62,6 @@ You will notice that all AIs show consistent lists of readers and books as both 
 <br>
 2) The front-end service can easily consume the RESTful APIs thanks to the declarative model offered by the Spring Cloud OpenFeign library.<br>
 <br>
-3) This microservice architecture leverages a <b>service registry</b>, <b>config server</b> and <b>API gateway</b>, all of them implemented using the Spring Cloud project.<br>
+3) This microservice architecture leverages a <b>service registry</b>, <b>config server</b> and <b>API gateway</b>, all of them implemented using the Spring Cloud umbrella project.<br>
 <br>
 4) SQL databases have been chosen as data stores. The default implementations of both <b>Reader</b> and <b>Book</b> services are the H2 embedded in-memory database when running locally.<br>
-
