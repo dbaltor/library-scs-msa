@@ -64,4 +64,4 @@ You will notice that all AIs show consistent lists of readers and books as both 
 <br>
 3) This microservice architecture leverages a <b>service registry</b>, <b>config server</b> and <b>API gateway</b>, all of them implemented using the Spring Cloud umbrella project.<br>
 <br>
-4) SQL databases have been chosen as data stores. The default implementations of both <b>Reader</b> and <b>Book</b> services are the H2 embedded in-memory database when running locally.<br>
+4) SQL databases have been chosen as data stores. Both <b>Reader</b> and <b>Book</b> services use the embedded in-memory H2 database when running locally.<br>
