@@ -40,7 +40,6 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-actuator'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
-	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	
 	//Required to connect to PCF Service Registry.
 	implementation 'io.pivotal.spring.cloud:spring-cloud-services-starter-service-registry'
@@ -56,11 +55,18 @@ dependencies {
 	////implementation "io.micrometer:micrometer-registry-prometheus" // may be used by resilience4j"
 	
 	//Required to connect to PCF Config Server. It includes 
-		//Spring Cloud Config Client
-		//Spring Security OAuth2
+	//Spring Cloud Config Client
+	//Spring Security OAuth2
 	implementation 'io.pivotal.spring.cloud:spring-cloud-services-starter-config-client'
+	//implementation 'org.springframework.cloud:spring-cloud-starter-config'
+	//2020.0 Bootstrap, provided by spring-cloud-commons, is no longer enabled by default. 
+	//https://github.com/spring-cloud/spring-cloud-release/wiki/Spring-Cloud-2020.0-Release-Notes#breaking-changes
+	implementation 'org.springframework.cloud:spring-cloud-starter-bootstrap'
 
 	testImplementation 'org.springframework.cloud:spring-cloud-starter-contract-stub-runner'
+	
+	testImplementation 'junit:junit:4.13'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 
 	testImplementation 'com.github.javafaker:javafaker:1.0.1'
 	

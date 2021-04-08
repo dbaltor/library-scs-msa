@@ -47,7 +47,6 @@ dependencyManagement {
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-actuator'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
-	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 	//implementation 'org.springframework.boot:spring-boot-starter-data-rest'
 	// https://mvnrepository.com/artifact/io.rest-assured/spring-mock-mvc
@@ -72,9 +71,16 @@ dependencies {
 		//Spring Cloud Config Client
 		//Spring Security OAuth2
 	implementation 'io.pivotal.spring.cloud:spring-cloud-services-starter-config-client'
+	//implementation 'org.springframework.cloud:spring-cloud-starter-config'
+	//2020.0 Bootstrap, provided by spring-cloud-commons, is no longer enabled by default. 
+	//https://github.com/spring-cloud/spring-cloud-release/wiki/Spring-Cloud-2020.0-Release-Notes#breaking-changes
+	implementation 'org.springframework.cloud:spring-cloud-starter-bootstrap'
 	
 	testImplementation 'org.springframework.cloud:spring-cloud-starter-contract-verifier'
 	testImplementation 'org.springframework.cloud:spring-cloud-starter-contract-stub-runner'
+
+	testImplementation 'junit:junit:4.13'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 
 	compileOnly 'org.projectlombok:lombok'
 	annotationProcessor 'org.projectlombok:lombok'
