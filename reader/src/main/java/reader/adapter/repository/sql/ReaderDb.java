@@ -4,11 +4,7 @@ import reader.dto.Reader;
 
 import java.util.Date;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
+import org.springframework.data.annotation.Id;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -18,13 +14,11 @@ import lombok.Setter;
 import lombok.ToString;
 import lombok.val;
 
-@Entity
 @ToString @Getter @NoArgsConstructor @RequiredArgsConstructor(staticName = "of")
 public class ReaderDb {
-    private @Setter @GeneratedValue @Id long id;
+    private @Setter @Id long id;
     private @NonNull String firstName;
     private @NonNull String lastName;
-    @Temporal(TemporalType.DATE)
     private @NonNull Date dob;
     private @NonNull String address;
     private @NonNull String phone;

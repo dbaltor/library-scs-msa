@@ -44,7 +44,7 @@ public class BookRepositoryImpl implements BookRepository{
     }
 
     public List<Book> findByReaderId(long id) {
-        return bookRepository.findByReader(id)
+        return bookRepository.findByReaderId(id)
         .stream()
         .map(BookDb::book)
         .collect(toList());

@@ -2,9 +2,7 @@ package book.adapter.repository.sql;
 
 import book.dto.Book;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import org.springframework.data.annotation.Id;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -14,17 +12,16 @@ import lombok.Setter;
 import lombok.ToString;
 import lombok.val;
 
-@Entity
 @ToString @Getter @NoArgsConstructor @RequiredArgsConstructor(staticName = "of")
 public class BookDb {
     //@GeneratedValue(strategy = GenerationType.AUTO) // default approach equivalent to the below   
-    private @Setter @Id @GeneratedValue long id;
+    private @Setter @Id long id;
     private @NonNull String name;
     private @NonNull String author;
     private @NonNull String genre;
     private @NonNull String publisher;
     // DDD aggregate id
-    private @Setter long readerId;
+    private @NonNull Long readerId;
 
     public Book book() {
         return Book.builder()
@@ -42,9 +39,9 @@ public class BookDb {
             b.getName(),
             b.getAuthor(),
             b.getGenre(),
-            b.getPublisher());
+            b.getPublisher(),
+            b.getReaderId());
         bookDb.setId(b.getId());
-        bookDb.setReaderId(b.getReaderId());    
         return bookDb;
     }
 }
