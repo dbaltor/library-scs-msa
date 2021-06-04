@@ -1,0 +1,13 @@
+https://docs.pivotal.io/api-portal/1-0/installing.html
+
+Download and Extract Installation Resources
+API portal in TAS only requires the JAR available in the distribution package.
+
+To download the components:
+
+Visit VMware Tanzu Network and log in.
+Navigate to the API portal for VMware Tanzu product listing.
+In the Releases list, select the version that you wish to install.
+Download “API portal for VMware Tanzu Installer”.
+Extract the contents of the archive file:
+  $ tar zxf api-portal-for-vmware-tanzu-[VERSION].tgz
