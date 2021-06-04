@@ -10,4 +10,5 @@ Navigate to the API portal for VMware Tanzu product listing.
 In the Releases list, select the version that you wish to install.
 Download “API portal for VMware Tanzu Installer”.
 Extract the contents of the archive file:
+  $ tar xvf api-portal-for-vmware-tanzu-[VERSION].tar
   $ tar zxf api-portal-for-vmware-tanzu-[VERSION].tgz
