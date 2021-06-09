@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
@@ -20,6 +21,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+@RequestMapping(value = "readers",  produces = MediaType.APPLICATION_JSON_VALUE)
 public interface ReaderServiceController {
      /**
      * Retrieve the list of readers currently stored in the Reader datastore
@@ -29,25 +31,24 @@ public interface ReaderServiceController {
      * @param readerId  the id of the reader currently borrowing the books, if any.
      * @return          the list of readers retrieved
      */
-    @GetMapping(value = "/readers",
-        produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping
     public List<Reader> getReaders(
         @RequestParam("page") Optional<Integer> pageNum,
         @RequestParam("size") Optional<Integer> pageSize,
         @RequestParam("reader") Optional<Long> readerId);
 
-    @PostMapping("/readers/commands/load")
+    @PostMapping("commands/load")
     public List<Reader> loadDatabase(@RequestParam Optional<Integer> count);
 
-    @PostMapping("/readers/commands/cleanup")
+    @PostMapping("commands/cleanup")
     public String cleanUp();
 
-    @PostMapping("/readers/{id}/commands/validatebookborrowing")
+    @PostMapping("{id}/commands/validatebookborrowing")
     public Set<BorrowingErrors> validateBookBorrowing(
         @PathVariable(name = "id") Long readerId, 
         @RequestBody ValidationRequest validationRequest);
 
-    @PostMapping("readers/{id}/commands/validatebookreturning")
+    @PostMapping("{id}/commands/validatebookreturning")
     public Set<ReturningErrors> validateBookReturning(
         @PathVariable(name = "id") Long readerId, 
         @RequestBody ValidationRequest validationRequest);

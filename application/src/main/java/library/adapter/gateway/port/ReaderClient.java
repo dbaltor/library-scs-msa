@@ -5,12 +5,14 @@ import library.dto.Reader;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 import java.util.Optional;
 
 @FeignClient(name = "library-reader-service")
+@RequestMapping("readers")
 public interface ReaderClient {
      /**
      * Retrieve the list of readers currently stored in the Reader datastore
@@ -20,15 +22,15 @@ public interface ReaderClient {
      * @param readerId  the id of the reader currently borrowing the books, if any.
      * @return          the list of readers retrieved
      */
-    @GetMapping("/readers")
+    @GetMapping
     public List<Reader> getReaders(
         @RequestParam("page") Optional<Integer> pageNum,
         @RequestParam("size") Optional<Integer> pageSize,
         @RequestParam("reader") Optional<Long> readerId);
 
-    @PostMapping("/readers/commands/load")
+    @PostMapping("commands/load")
     public List<Reader> loadDatabase(@RequestParam Optional<Integer> count);
 
-    @PostMapping("/readers/commands/cleanup")
+    @PostMapping("commands/cleanup")
     public String cleanUp();
 }

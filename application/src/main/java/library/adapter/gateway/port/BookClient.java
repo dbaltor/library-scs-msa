@@ -6,6 +6,7 @@ import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
@@ -16,6 +17,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.ToString;
 
 @FeignClient(name = "library-book-service")
+@RequestMapping("books")
 public interface BookClient {
     @ToString
     @RequiredArgsConstructor(staticName = "of")
@@ -24,22 +26,22 @@ public interface BookClient {
         public @NonNull Long bookIds[];
     }
 
-    @GetMapping("/books")
+    @GetMapping
     public List<Book> getBooks(
         @RequestParam("page") Optional<Integer> pageNum,
         @RequestParam("size") Optional<Integer> pageSize,
         @RequestParam("reader") Optional<Long> readerId);
 
-    @PostMapping("/books/commands/load")
+    @PostMapping("commands/load")
     public List<Book> loadDatabase(@RequestParam Optional<Integer> count);
 
-    @PostMapping("/books/commands/cleanup")
+    @PostMapping("commands/cleanup")
     public String cleanUp();
 
-    @PostMapping("/books/commands/borrow")
+    @PostMapping("commands/borrow")
     public List<Book> borrowBooks(@RequestBody BooksRequest booksRequest);
 
-    @PostMapping("/books/commands/return")
+    @PostMapping("commands/return")
     public List<Book> returnBooks(@RequestBody BooksRequest booksRequest);
 }
 
