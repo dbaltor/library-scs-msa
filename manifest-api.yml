@@ -24,7 +24,14 @@ applications:
   - config-server
   - name: library-gateway
     parameters: 
-      routes: [{"path": "/library-book-service/**"}]
+    # routes: [{"path": "/library-book-service/**"}]
+      routes: [
+#        {"method": "GET", "path": "/library-book-service/books", "model": {"requestBody": {"description": "Testing 1..2..3"}}}, 
+        {"method": "GET", "path": "/library-book-service/books"}, 
+        {"method": "POST", "path": "/library-book-service/books/commands/load"},
+        {"method": "POST", "path": "/library-book-service/books/commands/cleanup"},
+        {"method": "POST", "path": "/library-book-service/books/commands/borrow"},
+        {"method": "POST", "path": "/library-book-service/books/commands/return"}]
 - name: library-reader-service
   path: reader/build/libs/reader-1.0.0.jar
   routes:
@@ -40,4 +47,10 @@ applications:
   - config-server
   - name: library-gateway
     parameters: 
-      routes: [{"path": "/library-reader-service/**"}]
+      # routes: [{"path": "/library-reader-service/**"}]
+      routes: [
+        {"method": "GET", "path": "/library-reader-service/readers"}, 
+        {"method": "POST", "path": "/library-reader-service/readers/commands/load"},
+        {"method": "POST", "path": "/library-reader-service/readers/commands/cleanup"},
+        {"method": "POST", "path": "/library-reader-service/readers/{id}/commands/validatebookborrowing"},
+        {"method": "POST", "path": "/library-reader-service/readers/{id}/commands/validatebookreturning"}]
