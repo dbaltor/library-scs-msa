@@ -54,6 +54,9 @@ dependencies {
     // includes com.sun.xml.bind:jaxb-osgi used by spring-mock-mvc
 	testImplementation 'io.rest-assured:xml-path:4.2.0'
 
+	implementation 'org.springdoc:springdoc-openapi-ui:1.5.9'
+	// API doc urls: JSON <app-url>/v3/api-docs YAML <app-url>/v3/api-docs.yaml Swagger <app-url>/swagger-ui.html
+
 	//Required to connect to PCF Service Registry.
 	implementation 'io.pivotal.spring.cloud:spring-cloud-services-starter-service-registry'
 	//implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-client'
