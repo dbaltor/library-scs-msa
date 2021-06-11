@@ -18,7 +18,7 @@ cf push -f manifest-api.yml
 
 # API Portal
 cf push api -p api-portal-for-vmware-tanzu-1.0.0/jars/api-portal-server-1.0.0.jar -b java_buildpack_offline --no-manifest --no-start
-cf set-env api API_PORTAL_SOURCE_URLS "`cf service-brokers | awk '$1 ~ /scg-service-broker/ {print $2}'`/openapi"
+cf set-env api API_PORTAL_SOURCE_URLS "`cf service-brokers | awk '$1 ~ /scg-service-broker/ {print $2}'`/openapi, https://petstore3.swagger.io/api/v3/openapi.json"
 # cf set-env api API_PORTAL_SOURCE_URLS https://scg-service-broker.sys.fremont.cf-app.com/openapi ## ${brokerUrl}/openapi where brokerUrl is from `cf service-brokers`
 cf start api
 
