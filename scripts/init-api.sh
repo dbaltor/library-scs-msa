@@ -3,7 +3,7 @@ set -e
 cd $(dirname $0)
 
 # Creating required service instances
-cf create-service p.config-server standard config-server -c '{"git": { "uri": "https://github.com/dbaltor/config-repo", "refreshRate": 30 } }'
+cf create-service p.config-server standard config-server -c '{"git": { "uri": "https://github.com/dbaltor/config-repo", "refreshRate": 30, "periodic": true} }'
 cf create-service p.service-registry standard service-registry
 cf create-service p.gateway standard library-gateway -c "{ \"host\": \"library-gtw\", \"cors\": { \"allowed-origins\": [ \"http://api.$(cf domains | awk '$1 ~ /^apps/ && $1 !~ /internal$/ { print $1}')\" ], \"allowed-methods\": [\"*\"], \"allowed-headers\": [\"*\"] } }"
 #cf create-service p.gateway standard library-gateway -c '{ "host": "library-gtw", "cors": { "allowed-origins": [ "http://api.apps.fremont.cf-app.com" ], "allowed-methods": ["*"], "allowed-headers": ["*"] } }'
