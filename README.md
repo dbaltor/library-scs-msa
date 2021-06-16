@@ -48,7 +48,7 @@ localhost:8080
 <br>
 8. You can access the back-end services RESTful APIs via the <b>API Gateway</b>. For example, retrieve the list of books using the <code>http https://library-gtw.&ltapps-domain&gt/library-book-service/books</code> command.<br>
 <br>
-9. (Optional) If you installed the <b>API Portal</b> on step 1, now you can access it at the route <code>https://api.&ltapps-domain&gt/</code>.<br>
+9. (Optional) If you installed the <b>API Portal</b> on step 1, now you can access it at the <code>https://api.&ltapps-domain&gt/</code> route.<br>
 <p/>
 <p/>
 <h2>Cleaning up:</h2>
