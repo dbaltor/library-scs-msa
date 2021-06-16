@@ -30,17 +30,15 @@ localhost:8080
 <p/>
 <p/>
 <h2>Testing in the cloud:</h2>
-1. Install all required services and push the applications on TAS running the <code>./scripts/init.sh</code> script.<br>
+1. Install all required services and push the applications on TAS running the <code>./scripts/init.sh</code> script. If you just want to test the API gateway integrated with <b>Tanzu API Portal</b> without databases being provisioned, run instead the <code>./scripts/init-api.sh &ltpath-to-api-portal-jar-file&gt</code> script, passing in the path to the API Portal jar file downloaded from the Tanzu Network.<br>
 <br>
 2. Use the published route to access the application running on TAS. You will notice that the home page looks different now. The application has detected it is running on TAS :) <br>
 <ins>URL:</ins><br>
-<code>https://library-msa.apps.pcfone.io/</code><br>
+<code>https://library-msa.&ltapps-domain&gt/</code><br>
 <br>
 3. Generate some data clicking on <i>Load Readers</i> and <i>Load Books</i> buttons.<br>
 <br>
-4. Scale out the front-end application via the <code>cf scale app library-msa -i 3</code>command.<br>
-<br>
-You will notice that all AIs show consistent lists of readers and books as both <b>Reader</b> and <b>Book</b> services are using backing database services bound to them.<br>
+4. Scale out the front-end application via the <code>cf scale app library-msa -i 3</code> command.<br>
 <br>
 5. Stop the <b>Reader</b> service instance using the <code>cf stop library-reader-service</code> command.<br>
 <br>
@@ -48,12 +46,14 @@ You will notice that all AIs show consistent lists of readers and books as both 
 <br>
 7. Navigate to the <i>List of Books</i> page. Borrow a book to some reader who hasn't yet borrowed any books. The operation is to succeed despite the <b>Reader</b> service being down. This is the <i>circuit breaker pattern</i> in action.<br>
 <br>
-8. You can access the back-end services RESTful APIs via the <b>API Gateway</b>. For example, retrieve the list of books using the <code>http https://library-gtw.apps.pcfone.io/library-book-service/books</code> command.
+8. You can access the back-end services RESTful APIs via the <b>API Gateway</b>. For example, retrieve the list of books using the <code>http https://library-gtw.&ltapps-domain&gt/library-book-service/books</code> command.<br>
+<br>
+9. (Optional) If you installed the <b>API Portal</b> on step 1, now you can access it at the route <code>https://api.&ltapps-domain&gt/</code>.<br>
 <p/>
 <p/>
 <h2>Cleaning up:</h2>
 <br>
-9. <code>./scripts/cleanup.sh</code><br>
+10. Run either <code>./scripts/cleanup.sh</code> or <code>./scripts/cleanup-api.sh</code> script depending on whether or not you deployed the <b>API Portal</b> on step 1.<br>
 <p/>
 <p/>
 <h2>Architectural Decisions:</h2>
