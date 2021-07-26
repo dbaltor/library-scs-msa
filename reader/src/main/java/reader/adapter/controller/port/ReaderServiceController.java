@@ -40,7 +40,7 @@ public interface ReaderServiceController {
     @PostMapping("commands/load")
     public List<Reader> loadDatabase(@RequestParam Optional<Integer> count);
 
-    @PostMapping("commands/cleanup")
+    @PostMapping(value = "commands/cleanup", produces = MediaType.TEXT_PLAIN_VALUE)
     public String cleanUp();
 
     @PostMapping("{id}/commands/validatebookborrowing")

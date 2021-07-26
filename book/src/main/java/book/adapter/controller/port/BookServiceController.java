@@ -36,7 +36,7 @@ public interface BookServiceController {
     @PostMapping("commands/load")
     public List<Book> loadDatabase(@RequestParam Optional<Integer> count);
 
-    @PostMapping("commands/cleanup")
+    @PostMapping(value = "commands/cleanup", produces = MediaType.TEXT_PLAIN_VALUE)
     public String cleanUp(); 
 
     @PostMapping(value = "commands/borrow", consumes = MediaType.APPLICATION_JSON_VALUE)
