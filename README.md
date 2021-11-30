@@ -33,6 +33,9 @@ __URL:__
 
 ## Testing in the cloud:
 
+*IMPORTANT NOTICE:*  
+The scripts require **cf CLI V7**.
+
 1. Install all required services and push the applications on TAS running the `./scripts/init.sh` script. If you just want to test the API gateway integrated with **Tanzu API Portal** without databases being provisioned, run instead the `./scripts/init-api.sh <path-to-api-portal-jar-file>` script, passing in the path to the API Portal jar file downloaded from the Tanzu Network.  
 
 1. Use the published route to access the application running on TAS. You will notice that the home page looks different now. The application has detected it is running on TAS :)  
