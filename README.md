@@ -1,10 +1,11 @@
-# Example of microservice-based application running on Tanzu Application Service (Former Pivotal Cloud Foundry)
-
-This demo aims to show the power of Tanzu Application Service (TAS) platfom when it comes to run microservices developed using [Spring Cloud](https://spring.io/projects/spring-cloud) umbrella project:  **Spring Cloud Netflix**, **Spring Cloud OpenFeign**, **Spring Cloud Config** and **Spring Cloud Gateway**.  
-
+  
+# Example of microservice-based application running on...
+![](./cloud-foundry-logo.png)  
+  
+This demo aims to show the power of Cloud Foundry platfom when it comes to run microservices developed using [Spring Cloud](https://spring.io/projects/spring-cloud) umbrella project:  **Spring Cloud Netflix**, **Spring Cloud OpenFeign**, **Spring Cloud Config** and **Spring Cloud Gateway**.  
+  
 ![](./scMSA.png)  
   
-
 Each service binds to Eureka Server to discover all the others and start automatically using *client-side load balancing* through OpenFeign. The front-end service will configure accordingly its home page when running on Tanzu Application Service (TAS).  
 Different Application Instances (AIs) will render the UI using different background colors, up to 4 different colors.  
   
